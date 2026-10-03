@@ -1,0 +1,674 @@
+```css
+/* =========================================
+   RESET
+========================================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#292929;
+  min-height:100vh;
+  background:#f5f0ed;
+}
+
+
+/* =========================================
+   FONDO
+========================================= */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(#211a1ad9,#211a1ad9),
+    url("../images/fondo-regalos.jpg") center/cover no-repeat fixed;
+  z-index:-2;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(
+    135deg,
+    #00000015,
+    #ffffff08
+  );
+  z-index:-1;
+  pointer-events:none;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+  background:#211a1af2;
+  color:#fff;
+  padding:28px 20px;
+  border-bottom:1px solid #c89b78;
+  position:sticky;
+  top:0;
+  z-index:500;
+}
+
+.header-contenido{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.marca h1{
+  font-family:Georgia,serif;
+  font-size:28px;
+  letter-spacing:1px;
+}
+
+.marca p{
+  margin-top:5px;
+  color:#d9c1b5;
+  font-size:13px;
+}
+
+.btn-carrito{
+  border:1px solid #d1a98b;
+  background:#302625;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:25px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.btn-carrito:hover{
+  background:#a96f4d;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+  max-width:1200px;
+  margin:30px auto 20px;
+  padding:45px 25px;
+  background:
+    linear-gradient(#211a1ad9,#211a1ad9),
+    url("../images/hero-regalos.jpg") center/cover;
+  border-radius:18px;
+  color:#fff;
+  border:1px solid #c89b78;
+  box-shadow:0 10px 30px #0006;
+}
+
+.hero h2{
+  font-family:Georgia,serif;
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  max-width:700px;
+  color:#ddd;
+  line-height:1.6;
+}
+
+
+/* =========================================
+   CATEGORIAS
+========================================= */
+
+.categorias{
+  max-width:1200px;
+  margin:25px auto;
+  padding:0 20px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.categoria-btn{
+  background:#29201f;
+  color:#fff;
+  border:1px solid #bd9274;
+  padding:10px 18px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.categoria-btn:hover,
+.categoria-btn.activa{
+  background:#a96f4d;
+}
+
+
+/* =========================================
+   CATALOGO
+========================================= */
+
+.catalogo{
+  max-width:1200px;
+  margin:auto;
+  padding:10px 20px 60px;
+}
+
+.titulo-seccion{
+  color:#fff;
+  font-family:Georgia,serif;
+  font-size:27px;
+  margin:25px 0 18px;
+}
+
+
+/* =========================================
+   PRODUCTOS HORIZONTALES
+========================================= */
+
+.productos{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.producto{
+  display:flex;
+  align-items:center;
+  background:#ffffffee;
+  border-radius:12px;
+  overflow:hidden;
+  min-height:120px;
+  cursor:pointer;
+  border:1px solid #ddd;
+  box-shadow:0 5px 18px #0003;
+  transition:.3s;
+}
+
+.producto:hover{
+  transform:translateX(4px);
+  border-color:#c89b78;
+  box-shadow:0 8px 24px #0005;
+}
+
+.producto img{
+  width:135px;
+  height:120px;
+  object-fit:cover;
+  flex-shrink:0;
+}
+
+.producto-info{
+  padding:15px 18px;
+  flex:1;
+}
+
+.producto-info h3{
+  font-size:19px;
+  margin-bottom:6px;
+}
+
+.producto-info p{
+  color:#666;
+  font-size:13px;
+  line-height:1.4;
+}
+
+.precios{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:9px;
+}
+
+.precio-mayoreo{
+  color:#995f3e;
+  font-weight:bold;
+}
+
+.precio-menudeo{
+  color:#333;
+  font-weight:bold;
+}
+
+.producto-flecha{
+  padding:20px;
+  font-size:25px;
+  color:#a96f4d;
+}
+
+
+/* =========================================
+   MODAL PRODUCTO
+========================================= */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000b;
+  z-index:2000;
+  padding:20px;
+  overflow:auto;
+}
+
+.modal-producto{
+  max-width:850px;
+  margin:4% auto;
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 15px 50px #0008;
+}
+
+.cerrar{
+  position:absolute;
+  right:15px;
+  top:10px;
+  font-size:32px;
+  color:#fff;
+  z-index:5;
+  cursor:pointer;
+  background:#0008;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  text-align:center;
+  line-height:38px;
+}
+
+.detalle{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.detalle img{
+  width:100%;
+  height:430px;
+  object-fit:cover;
+}
+
+.detalle-info{
+  padding:30px;
+}
+
+.detalle-info h2{
+  font-family:Georgia,serif;
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.detalle-descripcion{
+  color:#666;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.precio-box{
+  background:#f6f0ed;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+.precio-box div{
+  margin:7px 0;
+}
+
+.precio-box strong{
+  color:#995f3e;
+}
+
+.cantidad{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:20px 0;
+}
+
+.cantidad button{
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:#29201f;
+  color:#fff;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.cantidad span{
+  min-width:35px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.agregar{
+  width:100%;
+  border:0;
+  padding:14px;
+  background:#a96f4d;
+  color:#fff;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.agregar:hover{
+  background:#814e37;
+}
+
+
+/* =========================================
+   CARRITO
+========================================= */
+
+.carrito{
+  position:fixed;
+  right:-430px;
+  top:0;
+  width:400px;
+  max-width:92%;
+  height:100vh;
+  background:#fff;
+  z-index:3000;
+  box-shadow:-10px 0 35px #0006;
+  transition:.35s;
+  display:flex;
+  flex-direction:column;
+}
+
+.carrito.abierto{
+  right:0;
+}
+
+.carrito-header{
+  background:#211a1a;
+  color:#fff;
+  padding:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.carrito-header h2{
+  font-family:Georgia,serif;
+}
+
+.cerrar-carrito{
+  font-size:27px;
+  cursor:pointer;
+}
+
+.carrito-items{
+  flex:1;
+  overflow:auto;
+  padding:15px;
+}
+
+.carrito-item{
+  border-bottom:1px solid #ddd;
+  padding:14px 0;
+}
+
+.carrito-item h4{
+  margin-bottom:6px;
+}
+
+.carrito-item small{
+  color:#777;
+}
+
+.item-controles{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:9px;
+}
+
+.item-controles button{
+  border:0;
+  background:#29201f;
+  color:#fff;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.eliminar{
+  margin-left:auto;
+  background:#a33!important;
+}
+
+.carrito-footer{
+  padding:20px;
+  border-top:1px solid #ddd;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  font-size:21px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.btn-revisar{
+  width:100%;
+  padding:14px;
+  background:#25d366;
+  color:#fff;
+  border:0;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+
+/* =========================================
+   CHECKOUT
+========================================= */
+
+.checkout{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000b;
+  z-index:4000;
+  padding:20px;
+  overflow:auto;
+}
+
+.checkout-box{
+  max-width:600px;
+  margin:4% auto;
+  background:#fff;
+  border-radius:18px;
+  padding:28px;
+}
+
+.checkout-box h2{
+  font-family:Georgia,serif;
+  margin-bottom:20px;
+}
+
+.resumen{
+  background:#f5f0ed;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+.resumen-linea{
+  display:flex;
+  justify-content:space-between;
+  padding:7px 0;
+  border-bottom:1px solid #ddd;
+}
+
+.formulario label{
+  display:block;
+  margin-top:13px;
+  font-weight:bold;
+}
+
+.formulario input,
+.formulario textarea{
+  width:100%;
+  padding:12px;
+  margin-top:5px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-family:Arial;
+}
+
+.formulario textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.btn-enviar{
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  background:#25d366;
+  border:0;
+  color:#fff;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn-cerrar-checkout{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  background:#29201f;
+  color:#fff;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+
+/* =========================================
+   MÚSICA
+========================================= */
+
+.boton-musica{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:5000;
+  background:#29201f;
+  color:#fff;
+  border:1px solid #d1a98b;
+  border-radius:30px;
+  padding:11px 17px;
+  cursor:pointer;
+  font-weight:bold;
+  box-shadow:0 5px 18px #0005;
+}
+
+.boton-musica.activo{
+  background:#a96f4d;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+  background:#211a1af5;
+  color:#fff;
+  text-align:center;
+  padding:35px 20px;
+  border-top:1px solid #bd9274;
+}
+
+footer h3{
+  font-family:Georgia,serif;
+  margin-bottom:8px;
+}
+
+footer p{
+  color:#bbb;
+  font-size:13px;
+  margin:5px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:700px){
+
+  .header-contenido{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .producto img{
+    width:105px;
+    height:105px;
+  }
+
+  .producto-info{
+    padding:12px;
+  }
+
+  .producto-info h3{
+    font-size:16px;
+  }
+
+  .producto-flecha{
+    display:none;
+  }
+
+  .detalle{
+    grid-template-columns:1fr;
+  }
+
+  .detalle img{
+    height:300px;
+  }
+
+  .detalle-info{
+    padding:22px;
+  }
+
+  .carrito{
+    width:100%;
+    max-width:100%;
+  }
+
+  .hero h2{
+    font-size:28px;
+  }
+
+}
+```
