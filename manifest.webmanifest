@@ -1,0 +1,25 @@
+{
+  "name": "Regalos & Detalles | Catálogo Digital",
+  "short_name": "Regalos & Detalles",
+  "description": "Catálogo digital de regalos, detalles, globos, decoración y productos personalizados.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#211a1a",
+  "theme_color": "#211a1a",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
