@@ -500,6 +500,10 @@ header{
   overflow:auto;
 }
 
+.checkout.abierto{
+  display:block;
+}
+
 .checkout-box{
   max-width:600px;
   margin:4% auto;
