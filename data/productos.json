@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "categoria": "Tazas",
+    "nombre": "Taza Personalizada",
+    "descripcion": "Taza personalizada para cumpleaños, aniversarios y ocasiones especiales.",
+    "menudeo": 120,
+    "mayoreo": 85,
+    "imagen": "taza-personalizada.jpg"
+  },
+  {
+    "id": 2,
+    "categoria": "Tazas",
+    "nombre": "Taza Mágica",
+    "descripcion": "Taza que revela el diseño al agregar una bebida caliente.",
+    "menudeo": 180,
+    "mayoreo": 135,
+    "imagen": "taza-magica.jpg"
+  },
+  {
+    "id": 3,
+    "categoria": "Tazas",
+    "nombre": "Taza con Diseño Floral",
+    "descripcion": "Taza decorativa ideal para regalo.",
+    "menudeo": 150,
+    "mayoreo": 110,
+    "imagen": "taza-floral.jpg"
+  },
+  {
+    "id": 4,
+    "categoria": "Globos",
+    "nombre": "Globo de Helio Número",
+    "descripcion": "Globo metálico con número para cumpleaños y celebraciones.",
+    "menudeo": 180,
+    "mayoreo": 135,
+    "imagen": "globo-numero.jpg"
+  },
+  {
+    "id": 5,
+    "categoria": "Globos",
+    "nombre": "Globo de Helio Corazón",
+    "descripcion": "Globo metálico en forma de corazón para regalar.",
+    "menudeo": 160,
+    "mayoreo": 120,
+    "imagen": "globo-corazon.jpg"
+  },
+  {
+    "id": 6,
+    "categoria": "Globos",
+    "nombre": "Bouquet de Globos",
+    "descripcion": "Arreglo de globos para cumpleaños y eventos especiales.",
+    "menudeo": 450,
+    "mayoreo": 350,
+    "imagen": "bouquet-globos.jpg"
+  },
+  {
+    "id": 7,
+    "categoria": "Regalos",
+    "nombre": "Caja de Regalo",
+    "descripcion": "Caja decorativa lista para preparar un detalle especial.",
+    "menudeo": 250,
+    "mayoreo": 190,
+    "imagen": "caja-regalo.jpg"
+  },
+  {
+    "id": 8,
+    "categoria": "Regalos",
+    "nombre": "Peluche Decorativo",
+    "descripcion": "Peluche suave ideal para cumpleaños y fechas especiales.",
+    "menudeo": 350,
+    "mayoreo": 270,
+    "imagen": "peluche.jpg"
+  },
+  {
+    "id": 9,
+    "categoria": "Regalos",
+    "nombre": "Set de Regalo",
+    "descripcion": "Conjunto de productos seleccionado para una ocasión especial.",
+    "menudeo": 480,
+    "mayoreo": 370,
+    "imagen": "set-regalo.jpg"
+  },
+  {
+    "id": 10,
+    "categoria": "Regalos",
+    "nombre": "Vela Aromática",
+    "descripcion": "Vela decorativa con agradable aroma.",
+    "menudeo": 180,
+    "mayoreo": 130,
+    "imagen": "vela.jpg"
+  },
+  {
+    "id": 11,
+    "categoria": "Decoración",
+    "nombre": "Cortina Metálica",
+    "descripcion": "Decoración para fiestas y celebraciones.",
+    "menudeo": 120,
+    "mayoreo": 85,
+    "imagen": "cortina.jpg"
+  },
+  {
+    "id": 12,
+    "categoria": "Decoración",
+    "nombre": "Guirnalda Decorativa",
+    "descripcion": "Guirnalda para decoración de fiestas.",
+    "menudeo": 160,
+    "mayoreo": 115,
+    "imagen": "guirnalda.jpg"
+  },
+  {
+    "id": 13,
+    "categoria": "Decoración",
+    "nombre": "Kit para Cumpleaños",
+    "descripcion": "Kit decorativo para fiesta de cumpleaños.",
+    "menudeo": 280,
+    "mayoreo": 220,
+    "imagen": "kit-cumpleanos.jpg"
+  },
+  {
+    "id": 14,
+    "categoria": "Personalizados",
+    "nombre": "Playera Personalizada",
+    "descripcion": "Playera personalizada con diseño elegido por el cliente.",
+    "menudeo": 280,
+    "mayoreo": 220,
+    "imagen": "playera.jpg"
+  },
+  {
+    "id": 15,
+    "categoria": "Personalizados",
+    "nombre": "Termo Personalizado",
+    "descripcion": "Termo personalizado para regalo o uso personal.",
+    "menudeo": 350,
+    "mayoreo": 280,
+    "imagen": "termo.jpg"
+  },
+  {
+    "id": 16,
+    "categoria": "Personalizados",
+    "nombre": "Llavero Personalizado",
+    "descripcion": "Llavero personalizado para regalo.",
+    "menudeo": 100,
+    "mayoreo": 70,
+    "imagen": "llavero.jpg"
+  },
+  {
+    "id": 17,
+    "categoria": "Globos",
+    "nombre": "Globo con Frase",
+    "descripcion": "Globo decorativo con frase para diferentes ocasiones.",
+    "menudeo": 140,
+    "mayoreo": 100,
+    "imagen": "globo-frase.jpg"
+  },
+  {
+    "id": 18,
+    "categoria": "Tazas",
+    "nombre": "Taza para Pareja",
+    "descripcion": "Taza con diseño especial para parejas.",
+    "menudeo": 220,
+    "mayoreo": 170,
+    "imagen": "taza-pareja.jpg"
+  },
+  {
+    "id": 19,
+    "categoria": "Decoración",
+    "nombre": "Número Decorativo",
+    "descripcion": "Número decorativo para cumpleaños y aniversarios.",
+    "menudeo": 200,
+    "mayoreo": 150,
+    "imagen": "numero-decorativo.jpg"
+  },
+  {
+    "id": 20,
+    "categoria": "Regalos",
+    "nombre": "Canasta de Regalo",
+    "descripcion": "Canasta preparada para crear un detalle especial.",
+    "menudeo": 550,
+    "mayoreo": 430,
+    "imagen": "canasta.jpg"
+  }
+]
