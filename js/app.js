@@ -154,63 +154,53 @@ function abrirProducto(id) {
     }
 
     productoActual = producto;
-
     cantidadDetalle = 1;
 
-
+    const modal = document.getElementById("modalProducto");
     const imagen = document.getElementById("detalleImagen");
     const nombre = document.getElementById("detalleNombre");
     const descripcion = document.getElementById("detalleDescripcion");
     const menudeo = document.getElementById("detalleMenudeo");
     const mayoreo = document.getElementById("detalleMayoreo");
     const cantidad = document.getElementById("cantidadDetalle");
-    const modal = document.getElementById("modalProducto");
-
 
     if (!modal) {
-        console.error("No existe #modalProducto en index.html");
+        console.error("No existe #modalProducto");
         return;
     }
 
-
     if (imagen) {
-
-        imagen.src = `images/${producto.imagen}`;
+        imagen.src = "images/" + producto.imagen;
         imagen.alt = producto.nombre;
-
     }
-
 
     if (nombre) {
         nombre.textContent = producto.nombre;
     }
 
-
     if (descripcion) {
         descripcion.textContent = producto.descripcion;
     }
 
-
     if (menudeo) {
-        menudeo.textContent = `$${producto.menudeo}`;
+        menudeo.textContent = "$" + producto.menudeo;
     }
-
 
     if (mayoreo) {
-        mayoreo.textContent = `$${producto.mayoreo}`;
+        mayoreo.textContent = "$" + producto.mayoreo;
     }
-
 
     if (cantidad) {
-        cantidad.textContent = cantidadDetalle;
+        cantidad.textContent = "1";
     }
-
 
     modal.classList.add("abierto");
 
+    modal.style.display = "flex";
+    modal.style.visibility = "visible";
+    modal.style.opacity = "1";
+
 }
-
-
 /* =========================================
    CERRAR PRODUCTO
 ========================================= */
