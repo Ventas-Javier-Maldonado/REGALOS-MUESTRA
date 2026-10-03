@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<link
+  rel="manifest"
+  href="manifest.webmanifest"
+>
+
+<meta
+  name="theme-color"
+  content="#211a1a"
+>
+
+<link
+  rel="apple-touch-icon"
+  href="images/icon-192.png"
+>
+
+<link
+  rel="stylesheet"
+  href="css/styles.css"
+>
+
+<title>Regalos & Detalles | Catálogo Digital</title>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+  <div class="header-contenido">
+
+    <div class="marca">
+
+      <h1>
+        REGALOS & DETALLES
+      </h1>
+
+      <p>
+        Detalles que hacen especial cada momento
+      </p>
+
+    </div>
+
+
+    <button
+      class="btn-carrito"
+      onclick="abrirCarrito()"
+    >
+
+      🛒 Carrito
+
+      <span id="contador">
+        0
+      </span>
+
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="hero">
+
+  <h2>
+    Regalos para cada ocasión
+  </h2>
+
+  <p>
+
+    Tazas, globos con helio, detalles personalizados,
+    decoración, regalos para cumpleaños,
+    aniversarios, celebraciones y mucho más.
+
+    Compra por mayoreo o menudeo.
+
+  </p>
+
+</section>
+
+
+<!-- =========================================
+     CATEGORIAS
+========================================= -->
+
+<div class="categorias">
+
+  <button
+    class="categoria-btn activa"
+    onclick="filtrar('Todos', this)"
+  >
+    Todos
+  </button>
+
+
+  <button
+    class="categoria-btn"
+    onclick="filtrar('Tazas', this)"
+  >
+    Tazas
+  </button>
+
+
+  <button
+    class="categoria-btn"
+    onclick="filtrar('Globos', this)"
+  >
+    Globos
+  </button>
+
+
+  <button
+    class="categoria-btn"
+    onclick="filtrar('Regalos', this)"
+  >
+    Regalos
+  </button>
+
+
+  <button
+    class="categoria-btn"
+    onclick="filtrar('Decoración', this)"
+  >
+    Decoración
+  </button>
+
+
+  <button
+    class="categoria-btn"
+    onclick="filtrar('Personalizados', this)"
+  >
+    Personalizados
+  </button>
+
+</div>
+
+
+<!-- =========================================
+     CATALOGO
+========================================= -->
+
+<main class="catalogo">
+
+  <h2 class="titulo-seccion">
+    Catálogo de productos
+  </h2>
+
+
+  <div
+    class="productos"
+    id="productos"
+  ></div>
+
+</main>
+
+
+<!-- =========================================
+     MODAL PRODUCTO
+========================================= -->
+
+<div
+  class="modal"
+  id="modalProducto"
+>
+
+  <div class="modal-producto">
+
+
+    <span
+      class="cerrar"
+      onclick="cerrarProducto()"
+    >
+
+      &times;
+
+    </span>
+
+
+    <div class="detalle">
+
+
+      <img
+        id="detalleImagen"
+        src=""
+        alt="Producto"
+      >
+
+
+      <div class="detalle-info">
+
+        <h2 id="detalleNombre"></h2>
+
+
+        <p
+          class="detalle-descripcion"
+          id="detalleDescripcion"
+        ></p>
+
+
+        <div class="precio-box">
+
+          <div>
+
+            Precio menudeo:
+
+            <strong
+              id="detalleMenudeo"
+            ></strong>
+
+          </div>
+
+
+          <div>
+
+            Precio mayoreo:
+
+            <strong
+              id="detalleMayoreo"
+            ></strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="cantidad">
+
+          <button
+            onclick="cambiarCantidad(-1)"
+          >
+            −
+          </button>
+
+
+          <span id="cantidadDetalle">
+            1
+          </span>
+
+
+          <button
+            onclick="cambiarCantidad(1)"
+          >
+            +
+          </button>
+
+        </div>
+
+
+        <button
+          class="agregar"
+          onclick="agregarDesdeDetalle()"
+        >
+
+          🛒 AGREGAR AL CARRITO
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================
+     CARRITO
+========================================= -->
+
+<aside
+  class="carrito"
+  id="carrito"
+>
+
+  <div class="carrito-header">
+
+    <h2>
+      Mi pedido
+    </h2>
+
+
+    <span
+      class="cerrar-carrito"
+      onclick="cerrarCarrito()"
+    >
+
+      &times;
+
+    </span>
+
+  </div>
+
+
+  <div
+    class="carrito-items"
+    id="carritoItems"
+  >
+
+    <p
+      style="
+        text-align:center;
+        color:#777;
+        padding:30px;
+      "
+    >
+
+      Tu carrito está vacío.
+
+    </p>
+
+  </div>
+
+
+  <div class="carrito-footer">
+
+    <div class="total">
+
+      <span>
+        Total:
+      </span>
+
+
+      <span id="total">
+        $0 MXN
+      </span>
+
+    </div>
+
+
+    <button
+      class="btn-revisar"
+      onclick="abrirCheckout()"
+    >
+
+      REVISAR PEDIDO
+
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- =========================================
+     CHECKOUT
+========================================= -->
+
+<div
+  class="checkout"
+  id="checkout"
+>
+
+  <div class="checkout-box">
+
+
+    <h2>
+      Revisar pedido
+    </h2>
+
+
+    <div
+      class="resumen"
+      id="resumen"
+    ></div>
+
+
+    <form
+      class="formulario"
+      onsubmit="enviarPedido(event)"
+    >
+
+
+      <label>
+        Nombre
+      </label>
+
+
+      <input
+        type="text"
+        id="cliente"
+        required
+        placeholder="Tu nombre"
+      >
+
+
+      <label>
+        Teléfono
+      </label>
+
+
+      <input
+        type="tel"
+        id="telefono"
+        required
+        placeholder="Tu teléfono"
+      >
+
+
+      <label>
+        Observaciones
+      </label>
+
+
+      <textarea
+        id="observaciones"
+        placeholder="Alguna indicación para tu pedido..."
+      ></textarea>
+
+
+      <button
+        class="btn-enviar"
+        type="submit"
+      >
+
+        📲 ENVIAR PEDIDO POR WHATSAPP
+
+      </button>
+
+
+    </form>
+
+
+    <button
+      class="btn-cerrar-checkout"
+      onclick="cerrarCheckout()"
+    >
+
+      Regresar al catálogo
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================
+     MÚSICA
+========================================= -->
+
+<audio
+  id="musica"
+  loop
+  preload="auto"
+>
+
+  <source
+    src="audio/musica-regalos.mp3"
+    type="audio/mpeg"
+  >
+
+</audio>
+
+
+<button
+  class="boton-musica"
+  id="botonMusica"
+  onclick="controlarMusica()"
+>
+
+  ♫ Música
+
+</button>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+  <h3>
+    REGALOS & DETALLES
+  </h3>
+
+
+  <p>
+    Detalles para cada ocasión.
+  </p>
+
+
+  <p>
+    Mayoreo • Menudeo • Pedidos por WhatsApp
+  </p>
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script
+  src="js/app.js"
+  defer
+></script>
+
+
+</body>
+
+</html>
