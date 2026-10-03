@@ -207,12 +207,15 @@ function abrirProducto(id) {
 
 function cerrarProducto() {
 
-    const modal =
-        document.getElementById("modalProducto");
+    const modal = document.getElementById("modalProducto");
 
     if (!modal) return;
 
     modal.classList.remove("abierto");
+
+    modal.style.display = "none";
+    modal.style.visibility = "hidden";
+    modal.style.opacity = "0";
 
 }
 
