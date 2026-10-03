@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         productos = await respuesta.json();
 
         mostrarProductos();
+        actualizarCarrito();
 
     } catch (error) {
 
@@ -29,11 +30,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const contenedor = document.getElementById("productos");
 
         if (contenedor) {
+
             contenedor.innerHTML = `
                 <p style="text-align:center;">
                     No se pudo cargar el catálogo.
                 </p>
             `;
+
         }
 
     }
@@ -60,8 +63,8 @@ function mostrarProductos(lista = productos) {
         tarjeta.className = "producto";
 
         tarjeta.innerHTML = `
-            <img 
-                src="images/${producto.imagen}" 
+            <img
+                src="images/${producto.imagen}"
                 alt="${producto.nombre}"
                 loading="lazy"
             >
@@ -93,7 +96,7 @@ function mostrarProductos(lista = productos) {
             </div>
         `;
 
-        tarjeta.addEventListener("click", () => {
+        tarjeta.addEventListener("click", function () {
             abrirProducto(producto.id);
         });
 
@@ -136,59 +139,96 @@ function filtrar(categoria, boton) {
 
 
 /* =========================================
-   MODAL PRODUCTO
+   ABRIR PRODUCTO
 ========================================= */
 
 function abrirProducto(id) {
 
     const producto = productos.find(
-        producto => producto.id === id
+        producto => Number(producto.id) === Number(id)
     );
 
-    if (!producto) return;
+    if (!producto) {
+        console.error("Producto no encontrado:", id);
+        return;
+    }
 
     productoActual = producto;
+
     cantidadDetalle = 1;
 
-    document.getElementById("detalleImagen").src =
-        `images/${producto.imagen}`;
 
-    document.getElementById("detalleImagen").alt =
-        producto.nombre;
-
-    document.getElementById("detalleNombre").textContent =
-        producto.nombre;
-
-    document.getElementById("detalleDescripcion").textContent =
-        producto.descripcion;
-
-    document.getElementById("detalleMenudeo").textContent =
-        `$${producto.menudeo}`;
-
-    document.getElementById("detalleMayoreo").textContent =
-        `$${producto.mayoreo}`;
-
-    document.getElementById("cantidadDetalle").textContent =
-        cantidadDetalle;
-
-    document
-        .getElementById("modalProducto")
-        .classList.add("abierto");
-
-}
+    const imagen = document.getElementById("detalleImagen");
+    const nombre = document.getElementById("detalleNombre");
+    const descripcion = document.getElementById("detalleDescripcion");
+    const menudeo = document.getElementById("detalleMenudeo");
+    const mayoreo = document.getElementById("detalleMayoreo");
+    const cantidad = document.getElementById("cantidadDetalle");
+    const modal = document.getElementById("modalProducto");
 
 
-function cerrarProducto() {
+    if (!modal) {
+        console.error("No existe #modalProducto en index.html");
+        return;
+    }
 
-    document
-        .getElementById("modalProducto")
-        .classList.remove("abierto");
+
+    if (imagen) {
+
+        imagen.src = `images/${producto.imagen}`;
+        imagen.alt = producto.nombre;
+
+    }
+
+
+    if (nombre) {
+        nombre.textContent = producto.nombre;
+    }
+
+
+    if (descripcion) {
+        descripcion.textContent = producto.descripcion;
+    }
+
+
+    if (menudeo) {
+        menudeo.textContent = `$${producto.menudeo}`;
+    }
+
+
+    if (mayoreo) {
+        mayoreo.textContent = `$${producto.mayoreo}`;
+    }
+
+
+    if (cantidad) {
+        cantidad.textContent = cantidadDetalle;
+    }
+
+
+    modal.classList.add("abierto");
 
 }
 
 
 /* =========================================
-   CANTIDAD DEL PRODUCTO
+   CERRAR PRODUCTO
+========================================= */
+
+function cerrarProducto() {
+
+    const modal =
+        document.getElementById("modalProducto");
+
+    if (!modal) return;
+
+    modal.classList.remove("abierto");
+
+}
+
+
+/* =========================================
+   CAMBIAR CANTIDAD DEL PRODUCTO
 ========================================= */
 
 function cambiarCantidad(valor) {
@@ -199,23 +239,29 @@ function cambiarCantidad(valor) {
         cantidadDetalle = 1;
     }
 
-    document.getElementById("cantidadDetalle").textContent =
-        cantidadDetalle;
+    const cantidad =
+        document.getElementById("cantidadDetalle");
+
+    if (cantidad) {
+        cantidad.textContent = cantidadDetalle;
+    }
 
 }
 
 
 /* =========================================
-   AGREGAR DESDE EL MODAL
+   AGREGAR DESDE DETALLE
 ========================================= */
 
 function agregarDesdeDetalle() {
 
     if (!productoActual) return;
 
+
     const existente = carrito.find(
         item => item.id === productoActual.id
     );
+
 
     if (existente) {
 
@@ -224,11 +270,15 @@ function agregarDesdeDetalle() {
     } else {
 
         carrito.push({
+
             ...productoActual,
+
             cantidad: cantidadDetalle
+
         });
 
     }
+
 
     cerrarProducto();
 
@@ -245,17 +295,23 @@ function agregarDesdeDetalle() {
 
 function actualizarCarrito() {
 
-    const contenedor = document.getElementById("carritoItems");
+    const contenedor =
+        document.getElementById("carritoItems");
 
-    const contador = document.getElementById("contador");
+    const contador =
+        document.getElementById("contador");
 
-    const totalElemento = document.getElementById("total");
+    const totalElemento =
+        document.getElementById("total");
+
 
     if (!contenedor || !contador || !totalElemento) {
         return;
     }
 
+
     contenedor.innerHTML = "";
+
 
     if (carrito.length === 0) {
 
@@ -270,6 +326,7 @@ function actualizarCarrito() {
         totalElemento.textContent = "$0";
 
         return;
+
     }
 
 
@@ -282,14 +339,19 @@ function actualizarCarrito() {
         const subtotal =
             item.menudeo * item.cantidad;
 
+
         total += subtotal;
 
         cantidadTotal += item.cantidad;
 
 
-        const elemento = document.createElement("div");
+        const elemento =
+            document.createElement("div");
 
-        elemento.className = "carrito-item";
+
+        elemento.className =
+            "carrito-item";
+
 
         elemento.innerHTML = `
 
@@ -335,19 +397,20 @@ function actualizarCarrito() {
 
 
             <div class="carrito-subtotal">
-
                 $${subtotal}
-
             </div>
 
         `;
+
 
         contenedor.appendChild(elemento);
 
     });
 
 
-    contador.textContent = cantidadTotal;
+    contador.textContent =
+        cantidadTotal;
+
 
     totalElemento.textContent =
         `$${total}`;
@@ -356,23 +419,33 @@ function actualizarCarrito() {
 
 
 /* =========================================
-   ABRIR / CERRAR CARRITO
+   ABRIR CARRITO
 ========================================= */
 
 function abrirCarrito() {
 
-    document
-        .getElementById("carrito")
-        .classList.add("abierto");
+    const carritoElemento =
+        document.getElementById("carrito");
+
+    if (!carritoElemento) return;
+
+    carritoElemento.classList.add("abierto");
 
 }
 
 
+/* =========================================
+   CERRAR CARRITO
+========================================= */
+
 function cerrarCarrito() {
 
-    document
-        .getElementById("carrito")
-        .classList.remove("abierto");
+    const carritoElemento =
+        document.getElementById("carrito");
+
+    if (!carritoElemento) return;
+
+    carritoElemento.classList.remove("abierto");
 
 }
 
@@ -383,21 +456,22 @@ function cerrarCarrito() {
 
 function cambiarCarrito(id, cantidad) {
 
-    const producto = carrito.find(
-        item => item.id === id
-    );
+    const producto =
+        carrito.find(item => item.id === id);
 
     if (!producto) return;
 
+
     producto.cantidad += cantidad;
+
 
     if (producto.cantidad <= 0) {
 
-        carrito = carrito.filter(
-            item => item.id !== id
-        );
+        carrito =
+            carrito.filter(item => item.id !== id);
 
     }
+
 
     actualizarCarrito();
 
@@ -410,9 +484,8 @@ function cambiarCarrito(id, cantidad) {
 
 function eliminarProducto(id) {
 
-    carrito = carrito.filter(
-        item => item.id !== id
-    );
+    carrito =
+        carrito.filter(item => item.id !== id);
 
     actualizarCarrito();
 
@@ -420,7 +493,7 @@ function eliminarProducto(id) {
 
 
 /* =========================================
-   CHECKOUT
+   ABRIR CHECKOUT
 ========================================= */
 
 function abrirCheckout() {
@@ -430,10 +503,12 @@ function abrirCheckout() {
         alert("Tu carrito está vacío.");
 
         return;
+
     }
 
 
-    const resumen = document.getElementById("resumen");
+    const resumen =
+        document.getElementById("resumen");
 
     if (!resumen) return;
 
@@ -447,9 +522,12 @@ function abrirCheckout() {
         const subtotal =
             item.menudeo * item.cantidad;
 
+
         total += subtotal;
 
+
         html += `
+
             <div class="resumen-item">
 
                 <span>
@@ -462,30 +540,41 @@ function abrirCheckout() {
                 </strong>
 
             </div>
+
         `;
 
     });
 
 
     html += `
+
         <div class="resumen-total">
 
-            <span>Total</span>
+            <span>
+                Total
+            </span>
 
             <strong>
                 $${total}
             </strong>
 
         </div>
+
     `;
 
 
     resumen.innerHTML = html;
 
 
-    document
-        .getElementById("checkout")
-        .classList.add("abierto");
+    const checkout =
+        document.getElementById("checkout");
+
+
+    if (checkout) {
+
+        checkout.classList.add("abierto");
+
+    }
 
 
     cerrarCarrito();
@@ -493,11 +582,18 @@ function abrirCheckout() {
 }
 
 
+/* =========================================
+   CERRAR CHECKOUT
+========================================= */
+
 function cerrarCheckout() {
 
-    document
-        .getElementById("checkout")
-        .classList.remove("abierto");
+    const checkout =
+        document.getElementById("checkout");
+
+    if (!checkout) return;
+
+    checkout.classList.remove("abierto");
 
 }
 
@@ -516,14 +612,17 @@ function enviarPedido(event) {
         alert("Tu carrito está vacío.");
 
         return;
+
     }
 
 
     const cliente =
         document.getElementById("cliente").value.trim();
 
+
     const telefonoCliente =
         document.getElementById("telefono").value.trim();
+
 
     const observaciones =
         document.getElementById("observaciones").value.trim();
@@ -541,6 +640,7 @@ function enviarPedido(event) {
         const subtotal =
             item.menudeo * item.cantidad;
 
+
         total += subtotal;
 
 
@@ -556,6 +656,7 @@ function enviarPedido(event) {
 
     mensaje +=
         `Nombre: ${cliente}%0A`;
+
 
     mensaje +=
         `Teléfono: ${telefonoCliente}%0A`;
@@ -579,7 +680,6 @@ function enviarPedido(event) {
 
     window.open(url, "_blank");
 
-
 }
 
 
@@ -587,14 +687,14 @@ function enviarPedido(event) {
    MÚSICA
 ========================================= */
 
-const musica =
-    document.getElementById("musica");
-
-const botonMusica =
-    document.getElementById("botonMusica");
-
-
 function controlarMusica() {
+
+    const musica =
+        document.getElementById("musica");
+
+    const botonMusica =
+        document.getElementById("botonMusica");
+
 
     if (!musica || !botonMusica) {
         return;
